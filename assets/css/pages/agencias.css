@@ -1,0 +1,202 @@
+/* ===== AGENCIAS PAGE ===== */
+
+.agencies__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-xl);
+}
+
+/* Tarjetas Flip 3D */
+.card-flip {
+  perspective: 1000px;
+  height: 400px;
+}
+
+.card-flip__inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.card-flip:hover .card-flip__inner {
+  transform: rotateY(180deg);
+}
+
+.card-flip__front,
+.card-flip__back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+.card-flip__front {
+  background: var(--color-bg-secondary);
+  backdrop-filter: var(--glass-blur);
+  border: var(--glass-border);
+}
+
+.card-flip__back {
+  background: linear-gradient(135deg, #0A6847 0%, #1a8a5e 100%);
+  color: white;
+  transform: rotateY(180deg);
+}
+
+/* Agency Card Front */
+.agency-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: var(--spacing-xl);
+  text-align: center;
+}
+
+.agency-card__logo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: var(--spacing-lg);
+}
+
+.agency-logo--1 {
+  background: linear-gradient(135deg, #DC143C, #FF6B6B);
+}
+
+.agency-logo--2 {
+  background: linear-gradient(135deg, #1E90FF, #87CEEB);
+}
+
+.agency-logo--3 {
+  background: linear-gradient(135deg, #228B22, #90EE90);
+}
+
+.agency-logo--4 {
+  background: linear-gradient(135deg, #8B008B, #DA70D6);
+}
+
+.agency-card__name {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-xs);
+}
+
+.agency-card__location {
+  color: var(--color-text-light);
+  margin-bottom: var(--spacing-md);
+}
+
+.agency-card__rating {
+  margin-bottom: var(--spacing-lg);
+}
+
+/* Rating de estrellas */
+.rating {
+  display: inline-block;
+  font-size: var(--font-size-xl);
+  background: linear-gradient(90deg, #FFD700 var(--rating-percent), #DDDDDD var(--rating-percent));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.rating::before {
+  content: "★★★★★";
+}
+
+.rating--5 { --rating-percent: 100%; }
+.rating--4 { --rating-percent: 80%; }
+.rating--3 { --rating-percent: 60%; }
+.rating--2 { --rating-percent: 40%; }
+.rating--1 { --rating-percent: 20%; }
+
+.agency-card__badge {
+  display: inline-block;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  background: var(--color-primary);
+  color: white;
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+}
+
+/* Agency Card Back */
+.agency-card--back {
+  justify-content: space-between;
+  padding: var(--spacing-lg);
+}
+
+.agency-card--back .agency-card__name {
+  color: white;
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--spacing-sm);
+}
+
+.agency-card__description {
+  font-size: var(--font-size-sm);
+  line-height: 1.6;
+  margin-bottom: var(--spacing-md);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.agency-card__specialties {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+  justify-content: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+.agency-card__specialties .chip {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+}
+
+/* Botón Contactar Agencia */
+.agency-card--back .btn {
+  background: white !important;
+  color: #0A6847 !important;
+  border: none !important;
+  font-weight: 600;
+  padding: 12px 20px;
+  border-radius: 30px;
+  width: 100%;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  margin-top: auto;
+}
+
+.agency-card--back .btn:hover {
+  background: #FFD700 !important;
+  color: #0A6847 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .agencies__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .agencies__grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .card-flip {
+    height: 450px;
+  }
+}

@@ -1,0 +1,419 @@
+/* ===== HOME PAGE ===== */
+
+/* Hero Section */
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-top: calc(-1 * var(--header-height));
+  padding-top: var(--header-height);
+}
+
+.hero__video-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.hero__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%);
+}
+
+.hero__content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: white;
+  padding: var(--spacing-xl);
+}
+
+.hero__title {
+  font-family: var(--font-heading);
+  font-size: clamp(3rem, 10vw, 6rem);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-lg);
+  line-height: 1.1;
+}
+
+.hero__title-line {
+  display: block;
+}
+
+.hero__title-line--first {
+  animation: fadeInUp 1s ease forwards;
+}
+
+.hero__title-line--second {
+  animation: slideInLeft 1s ease 0.3s forwards;
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+
+.hero__subtitle {
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--spacing-xl);
+  opacity: 0;
+  animation: fadeInUp 1s ease 0.6s forwards;
+}
+
+.hero__clip-mask {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background: var(--color-bg);
+  clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 100%);
+  z-index: 3;
+}
+.featured__footer {
+  text-align: center;
+  margin-top: var(--spacing-3xl);  /* Más espacio */
+  margin-bottom: var(--spacing-xl); /* Espacio inferior */
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ===== CONTADOR ANIMADO ===== */
+
+@property --num-destinos {
+  syntax: "<integer>";
+  initial-value: 0;
+  inherits: false;
+}
+
+@property --num-viajeros {
+  syntax: "<integer>";
+  initial-value: 0;
+  inherits: false;
+}
+
+@property --num-agencias {
+  syntax: "<integer>";
+  initial-value: 0;
+  inherits: false;
+}
+
+.counter-section {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+  padding: var(--spacing-3xl) 0;
+  color: white;
+}
+
+.counter-section .section__title {
+  color: white;
+}
+
+.counter-section__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-2xl);
+  text-align: center;
+}
+
+.counter-item__number {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-6xl);
+  font-weight: var(--font-weight-bold);
+  line-height: 1;
+  margin-bottom: var(--spacing-sm);
+}
+
+.counter-item__label {
+  font-size: var(--font-size-lg);
+  opacity: 0.9;
+}
+
+/* Contador Destinos - 500+ */
+.counter--destinos {
+  counter-reset: num var(--num-destinos);
+  animation: countDestinos 3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.counter--destinos::after {
+  content: counter(num) "+";
+}
+
+/* Contador Viajeros - 15K+ */
+.counter--viajeros {
+  counter-reset: num var(--num-viajeros);
+  animation: countViajeros 3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.counter--viajeros::after {
+  content: counter(num) "K+";
+}
+
+/* Contador Agencias - 120+ */
+.counter--agencias {
+  counter-reset: num var(--num-agencias);
+  animation: countAgencias 3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.counter--agencias::after {
+  content: counter(num) "+";
+}
+
+@keyframes countDestinos {
+  from { --num-destinos: 0; }
+  to { --num-destinos: 500; }
+}
+
+@keyframes countViajeros {
+  from { --num-viajeros: 0; }
+  to { --num-viajeros: 15; }
+}
+
+@keyframes countAgencias {
+  from { --num-agencias: 0; }
+  to { --num-agencias: 120; }
+}
+
+/* Fallback para navegadores que no soportan @property */
+@supports not (animation-timeline: view()) {
+  .counter--destinos::after {
+    content: "500+";
+  }
+  .counter--viajeros::after {
+    content: "15K+";
+  }
+  .counter--agencias::after {
+    content: "120+";
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .counter-section__grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+  }
+  
+  .counter-item__number {
+    font-size: var(--font-size-5xl);
+  }
+}
+
+/* Testimonios Carrusel */
+.testimonials__carousel {
+  position: relative;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: var(--spacing-md) 0;
+}
+
+.testimonials__carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.testimonials__track {
+  display: flex;
+  gap: var(--spacing-xl);
+  padding: 0 var(--spacing-md);
+}
+
+.testimonial-card {
+  flex: 0 0 350px;
+  scroll-snap-align: start;
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-xl);
+  box-shadow: var(--shadow-md);
+  backdrop-filter: var(--glass-blur);
+  border: var(--glass-border);
+}
+
+.testimonial-card__avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-bottom: var(--spacing-md);
+}
+
+.testimonial-card__quote {
+  font-style: italic;
+  margin-bottom: var(--spacing-lg);
+  color: var(--color-text);
+}
+
+.testimonial-card__footer {
+  display: flex;
+  flex-direction: column;
+}
+
+.testimonial-card__author {
+  font-weight: var(--font-weight-semibold);
+  font-style: normal;
+  color: var(--color-text);
+}
+
+.testimonial-card__location {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-light);
+}
+
+/* Avatares CSS Puro */
+.avatar {
+  position: relative;
+  background: linear-gradient(135deg, var(--color-primary-light), var(--color-primary));
+}
+
+/* Avatar 1 - Mujer con cabello largo */
+.avatar--1::before {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: var(--color-neutral-900);
+  border-radius: 50%;
+  top: 18px;
+  left: 14px;
+  box-shadow: 18px 0 0 var(--color-neutral-900);
+}
+
+.avatar--1::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 6px;
+  border-bottom: 2px solid var(--color-neutral-900);
+  border-radius: 0 0 50% 50%;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Avatar 2 - Hombre con gafas */
+.avatar--2::before {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: var(--color-neutral-900);
+  border-radius: 50%;
+  top: 18px;
+  left: 12px;
+  box-shadow: 18px 0 0 var(--color-neutral-900);
+}
+
+.avatar--2::after {
+  content: '';
+  position: absolute;
+  width: 28px;
+  height: 14px;
+  border: 2px solid var(--color-secondary-dark);
+  border-radius: 50%;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Avatar 3 - Mujer con cabello corto */
+.avatar--3 {
+  background: linear-gradient(135deg, #D4A373, #B8845A);
+}
+
+.avatar--3::before {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: var(--color-neutral-900);
+  border-radius: 50%;
+  top: 18px;
+  left: 14px;
+  box-shadow: 18px 0 0 var(--color-neutral-900);
+}
+
+.avatar--3::after {
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 4px;
+  background: #E8C5A5;
+  border-radius: var(--radius-sm);
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Avatar 4 - Hombre con barba */
+.avatar--4 {
+  background: linear-gradient(135deg, #6B6B60, #4A4A40);
+}
+
+.avatar--4::before {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: var(--color-neutral-900);
+  border-radius: 50%;
+  top: 16px;
+  left: 12px;
+  box-shadow: 18px 0 0 var(--color-neutral-900);
+}
+
+.avatar--4::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 10px;
+  background: #4A4A40;
+  border-radius: 0 0 50% 50%;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Responsive Home */
+@media (max-width: 768px) {
+  .counter-section__grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+  }
+  
+  .testimonial-card {
+    flex: 0 0 280px;
+  }
+}

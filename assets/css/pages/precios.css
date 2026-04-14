@@ -1,0 +1,141 @@
+/* ===== PRECIOS PAGE ===== */
+
+/* Tabla de precios */
+.table--pricing {
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+}
+
+.table--pricing thead th {
+  background: var(--color-primary);
+  color: white;
+  padding: var(--spacing-lg);
+  font-size: var(--font-size-base);
+  text-align: left;
+  white-space: nowrap;
+}
+
+.table--pricing thead th:last-child {
+  text-align: center;
+}
+
+.table--pricing tbody tr {
+  border-bottom: 1px solid var(--color-neutral-200);
+  transition: all var(--transition-base);
+}
+
+.table--pricing tbody tr:hover {
+  background: rgba(46, 139, 87, 0.08);
+  transform: scale(1.01);
+  box-shadow: var(--shadow-sm);
+}
+
+.table--pricing td {
+  padding: var(--spacing-lg);
+}
+
+.table--pricing td:last-child {
+  text-align: center;
+  color: var(--color-text-light);
+  font-style: italic;
+}
+
+.table__destination {
+  display: flex;
+  flex-direction: column;
+}
+
+.destination-name {
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-lg);
+}
+
+.destination-country {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-light);
+}
+
+/* ===== TOOLTIPS CSS ===== */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: help;
+  margin-left: var(--spacing-xs);
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: normal;
+}
+
+.table--pricing thead .tooltip {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.tooltip:hover::after {
+  top: 100%;  
+  bottom: auto;
+  left: 10%;
+  right: auto;
+  transform: translateX(-50%);
+  background: var(--color-neutral-900);
+  color: white;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-normal);
+  white-space: nowrap;
+  box-shadow: var(--shadow-lg);
+  z-index: var(--z-tooltip);
+  pointer-events: none;
+}
+
+.tooltip:hover::before {
+  content: '';
+  position: absolute;
+  bottom: calc(100% - 5px);
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: var(--color-neutral-900);
+  z-index: var(--z-tooltip);
+  pointer-events: none;
+}
+
+.table--pricing tbody tr:hover {
+  background: rgba(10, 104, 71, 0.15);  /* Verde más intenso */
+}
+
+/* Nota de precios */
+.pricing__note {
+  margin-top: var(--spacing-lg);
+  text-align: right;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-light);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .table--pricing {
+    font-size: 14px;
+  }
+  
+  .table--pricing thead th,
+  .table--pricing td {
+    padding: var(--spacing-md);
+  }
+  
+  .tooltip:hover::after {
+    white-space: normal;
+    max-width: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .table--pricing {
+    font-size: 13px;
+  }
+  
+  .table--pricing thead th,
+  .table--pricing td {
+    padding: var(--spacing-sm);
+  }
+}

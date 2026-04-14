@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Destinos | Travel</title>
+  <meta name="description" content="Explora nuestros destinos alrededor del mundo">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;0,600;1,400..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+  <!-- ===== HEADER CON MENÚ DESPLEGABLE SIMPLIFICADO ===== -->
+<header class="header" role="banner">
+  <div class="header__container">
+    <a href="index.html" class="header__logo" aria-label="Viajes Cósmicos - Inicio">
+      <svg class="logo-svg" width="42" height="42" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="50" cy="50" r="45" class="logo-svg__circle" stroke="#0A6847" stroke-width="3" fill="none"/>
+        <path class="logo-svg__mountain" d="M20 70 L50 30 L80 70" stroke="#0A6847" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <path class="logo-svg__mountain-small" d="M35 70 L50 50 L65 70" stroke="#2E8B57" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="50" cy="55" r="4" fill="#FFD700"/>
+      </svg>
+      <span class="header__logo-text">Travel</span>
+    </a>
+
+    <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Menú" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="header__nav" id="mainNav" role="navigation" aria-label="Menú principal">
+      <ul class="nav__list" role="menubar">
+        <li class="nav__item" role="none">
+          <a href="index.html" class="nav__link nav__link--active" role="menuitem" aria-current="page">Inicio</a>
+        </li>
+
+        <li class="nav__item nav__item--dropdown" role="none">
+          <a href="destinos.html" class="nav__link nav__link--dropdown" role="menuitem" aria-haspopup="true" aria-expanded="false">Destinos</a>
+          <div class="dropdown-menu">
+            <ul>
+                <li><a href="destinos.html?filter=cultural">Cultural</a></li>
+                <li><a href="destinos.html?filter=naturaleza">Naturaleza</a></li>
+                <li><a href="destinos.html?filter=playa">Sol y Playa</a></li>
+                <li><a href="destinos.html?filter=gastronomico">Gastronómico</a></li>
+                <li><a href="destinos.html?filter=religioso">Religioso</a></li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="nav__item" role="none">
+          <a href="agencias.html" class="nav__link" role="menuitem">Agencias</a>
+        </li>
+
+        <li class="nav__item" role="none">
+          <a href="precios.html" class="nav__link" role="menuitem">Precios</a>
+        </li>
+
+        <li class="nav__item" role="none">
+          <a href="blog.html" class="nav__link" role="menuitem">Blog</a>
+        </li>
+
+        <li class="nav__item" role="none">
+          <a href="contacto.html" class="nav__link" role="menuitem">Contacto</a>
+        </li>
+      </ul>
+    </nav>
+
+    <button id="darkmode-toggle" class="darkmode-toggle" aria-label="Cambiar modo oscuro">
+      <svg class="darkmode-toggle__icon darkmode-toggle__icon--sun" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <circle cx="12" cy="12" r="5" fill="currentColor"/>
+        <path d="M12 1V3M12 21V23M23 12H21M3 12H1M20.36 3.64L18.95 5.05M5.05 18.95L3.64 20.36M20.36 20.36L18.95 18.95M5.05 5.05L3.64 3.64" stroke="currentColor" stroke-width="2"/>
+      </svg>
+      <svg class="darkmode-toggle__icon darkmode-toggle__icon--moon" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" fill="currentColor"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+
+  <main id="main-content" class="main-content">
+    <section class="page-header">
+      <div class="container">
+        <h1 class="page-header__title">Explora Nuestros Destinos</h1>
+        <p class="page-header__subtitle">Encuentra tu próxima aventura</p>
+      </div>
+    </section>
+
+    <!-- ===== FILTROS CSS-ONLY (ESTRUCTURA ORIGINAL QUE FUNCIONA) ===== -->
+    <section class="filters section" aria-labelledby="filters-title">
+      <div class="container">
+        <h2 id="filters-title" class="visually-hidden">Filtrar Destinos</h2>
+
+        <!-- Radio inputs ocultos para filtros -->
+        <input type="radio" name="filter" id="filter-all" class="filter-input" checked>
+        <input type="radio" name="filter" id="filter-cultural" class="filter-input">
+        <input type="radio" name="filter" id="filter-naturaleza" class="filter-input">
+        <input type="radio" name="filter" id="filter-playa" class="filter-input">
+        <input type="radio" name="filter" id="filter-gastronomico" class="filter-input">
+        <input type="radio" name="filter" id="filter-religioso" class="filter-input">
+
+        <div class="filters__chips">
+          <label for="filter-all" class="filter-chip">Todos</label>
+          <label for="filter-cultural" class="filter-chip">Cultural</label>
+          <label for="filter-naturaleza" class="filter-chip">Naturaleza</label>
+          <label for="filter-playa" class="filter-chip">Sol y Playa</label>
+          <label for="filter-gastronomico" class="filter-chip">Gastronómico</label>
+          <label for="filter-religioso" class="filter-chip">Religioso</label>
+        </div>
+
+        <!-- ===== MASONRY GRID ===== -->
+        <div class="masonry-grid">
+          <!-- Card 1 - Cultural -->
+          <article class="masonry-card h-1" data-category="cultural">
+            <div class="masonry-card__image-container">
+              <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=600&h=400&fit=crop" alt="Kioto, Japón" class="masonry-card__image" loading="lazy">
+              <div class="masonry-card__overlay"></div>
+            </div>
+            <div class="masonry-card__content">
+              <h3 class="masonry-card__title">Kioto</h3>
+              <p class="masonry-card__location">Japón</p>
+              <span class="chip">Cultural</span>
+            </div>
+          </article>
+
+          <!-- Card 2 - Naturaleza -->
+          <article class="masonry-card h-2" data-category="naturaleza">
+            <div class="masonry-card__image-container">
+              <img src="https://images.unsplash.com/photo-1526392060635-9d6019884377?w=600&h=800&fit=crop" alt="Machu Picchu, Perú" class="masonry-card__image" loading="lazy">
+              <div class="masonry-card__overlay"></div>
+            </div>
+            <div class="masonry-card__content">
+              <h3 class="masonry-card__title">Machu Picchu</h3>
+              <p class="masonry-card__location">Perú</p>
+              <span class="chip">Naturaleza</span>
+            </div>
+          </article>
+
+          <!-- Card 3 - Sol y Playa -->
+          <article class="masonry-card h-3" data-category="playa">
+            <div class="masonry-card__image-container">
+              <img src="https://cdn.sanity.io/images/nxpteyfv/goguides/9789a3218b31da66d81438d8efc2a9db9b16b215-1600x1066.jpg?fp-x=0.5&fp-y=0.5&w=1351&fit=max&auto=format" alt="Santorini, Grecia" class="masonry-card__image" loading="lazy">
+              <div class="masonry-card__overlay"></div>
+            </div>
+            <div class="masonry-card__content">
+              <h3 class="masonry-card__title">Santorini</h3>
+              <p class="masonry-card__location">Grecia</p>
+              <span class="chip">Sol y Playa</span>
+            </div>
+          </article>
+
+          <!-- Card 4 - Gastronómico -->
+          <article class="masonry-card h-1" data-category="gastronomico cultural">
+            <div class="masonry-card__image-container">
+              <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600&h=400&fit=crop" alt="París, Francia" class="masonry-card__image" loading="lazy">
+              <div class="masonry-card__overlay"></div>
+            </div>
+            <div class="masonry-card__content">
+              <h3 class="masonry-card__title">París</h3>
+              <p class="masonry-card__location">Francia</p>
+              <span class="chip">Gastronómico</span>
+            </div>
+          </article>
+
+          <!-- Card 5 - Naturaleza -->
+          <article class="masonry-card h-4" data-category="naturaleza">
+            <div class="masonry-card__image-container">
+              <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600&h=1000&fit=crop" alt="Bali, Indonesia" class="masonry-card__image" loading="lazy">
+              <div class="masonry-card__overlay"></div>
+            </div>
+            <div class="masonry-card__content">
+              <h3 class="masonry-card__title">Bali</h3>
+              <p class="masonry-card__location">Indonesia</p>
+              <span class="chip">Naturaleza</span>
+            </div>
+          </article>
+
+          <!-- Card 6 - Cultural/Religioso -->
+          <article class="masonry-card h-2" data-category="cultural religioso">
+            <div class="masonry-card__image-container">
+              <img src="https://images.unsplash.com/photo-1548013146-72479768bada?w=600&h=800&fit=crop" alt="Taj Mahal, India" class="masonry-card__image" loading="lazy">
+              <div class="masonry-card__overlay"></div>
+            </div>
+            <div class="masonry-card__content">
+              <h3 class="masonry-card__title">Taj Mahal</h3>
+              <p class="masonry-card__location">India</p>
+              <span class="chip">Religioso</span>
+            </div>
+          </article>
+
+          <!-- Card 7 - Sol y Playa -->
+          <article class="masonry-card h-3" data-category="playa">
+            <div class="masonry-card__image-container">
+              <img src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=600&h=900&fit=crop" alt="Maldivas" class="masonry-card__image" loading="lazy">
+              <div class="masonry-card__overlay"></div>
+            </div>
+            <div class="masonry-card__content">
+              <h3 class="masonry-card__title">Maldivas</h3>
+              <p class="masonry-card__location">Océano Índico</p>
+              <span class="chip">Sol y Playa</span>
+            </div>
+          </article>
+
+          <!-- Card 8 - Gastronómico -->
+          <article class="masonry-card h-1" data-category="gastronomico cultural">
+            <div class="masonry-card__image-container">
+              <img src="https://media.viajando.travel/adjuntos/236/imagenes/000/043/0000043054.jpg?0000-00-00-00-00-00" alt="Bangkok, Tailandia" class="masonry-card__image" loading="lazy">
+              <div class="masonry-card__overlay"></div>
+            </div>
+            <div class="masonry-card__content">
+              <h3 class="masonry-card__title">Bangkok</h3>
+              <p class="masonry-card__location">Tailandia</p>
+              <span class="chip">Gastronómico</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+      <!-- ===== TABLA DE PRECIOS CON TOOLTIPS ===== -->
+    <section class="pricing section" aria-labelledby="pricing-title">
+      <div class="container">
+        <h2 id="pricing-title" class="section__title">Tabla Comparativa de Precios</h2>
+
+        <div class="table-wrapper">
+          <table class="table table--pricing">
+            <thead>
+              <tr>
+                <th>Destino</th>
+                <th>Precio Base 
+                  <span class="tooltip" data-tip="Precio por persona en habitación doble. No incluye vuelos internacionales.">ℹ️</span>
+                </th>
+                <th>Todo Incluido 
+                  <span class="tooltip" data-tip="Incluye todas las comidas, bebidas, excursiones y traslados.">ℹ️</span>
+                </th>
+                <th>Descuento</th>
+                <th>Temporada 
+                  <span class="tooltip" data-tip="Mejor época para visitar este destino">ℹ️</span>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="table__destination">
+                  <span class="destination-name">Kioto</span>
+                  <span class="destination-country">Japón</span>
+                </td>
+                <td>$1,200</td>
+                <td>$1,800</td>
+                <td><span class="discount-badge">-15%</span></td>
+                <td>Mar - May / Oct - Nov</td>
+              </tr>
+              <tr>
+                <td class="table__destination">
+                  <span class="destination-name">Machu Picchu</span>
+                  <span class="destination-country">Perú</span>
+                </td>
+                <td>$950</td>
+                <td>$1,500</td>
+                <td><span class="discount-badge">-10%</span></td>
+                <td>Abr - Oct</td>
+              </tr>
+              <tr>
+                <td class="table__destination">
+                  <span class="destination-name">Santorini</span>
+                  <span class="destination-country">Grecia</span>
+                </td>
+                <td>$1,100</td>
+                <td>$1,700</td>
+                <td><span class="discount-badge discount-badge--high">-20%</span></td>
+                <td>May - Sep</td>
+              </tr>
+              <tr>
+                <td class="table__destination">
+                  <span class="destination-name">París</span>
+                  <span class="destination-country">Francia</span>
+                </td>
+                <td>$1,300</td>
+                <td>$2,000</td>
+                <td><span class="discount-badge">-5%</span></td>
+                <td>Abr - Jun / Sep - Oct</td>
+              </tr>
+              <tr>
+                <td class="table__destination">
+                  <span class="destination-name">Bali</span>
+                  <span class="destination-country">Indonesia</span>
+                </td>
+                <td>$850</td>
+                <td>$1,300</td>
+                <td><span class="discount-badge discount-badge--high">-25%</span></td>
+                <td>Abr - Oct</td>
+              </tr>
+              <tr>
+                <td class="table__destination">
+                  <span class="destination-name">Maldivas</span>
+                  <span class="destination-country">Océano Índico</span>
+                </td>
+                <td>$2,500</td>
+                <td>$3,800</td>
+                <td><span class="discount-badge">-12%</span></td>
+                <td>Nov - Abr</td>
+              </tr>
+              <tr>
+                <td class="table__destination">
+                  <span class="destination-name">Taj Mahal</span>
+                  <span class="destination-country">India</span>
+                </td>
+                <td>$800</td>
+                <td>$1,200</td>
+                <td><span class="discount-badge discount-badge--high">-30%</span></td>
+                <td>Oct - Mar</td>
+              </tr>
+              <tr>
+                <td class="table__destination">
+                  <span class="destination-name">Bangkok</span>
+                  <span class="destination-country">Tailandia</span>
+                </td>
+                <td>$750</td>
+                <td>$1,100</td>
+                <td><span class="discount-badge">-15%</span></td>
+                <td>Nov - Feb</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="pricing__note">
+          <p>* Precios por persona en USD. Sujetos a disponibilidad y cambios.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+ <!-- ===== FOOTER ===== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <!-- Newsletter -->
+        <div class="footer__newsletter">
+          <h3 class="footer__heading">Suscríbete a Nuestro Newsletter</h3>
+          <p class="footer__text">Recibe las mejores ofertas y destinos exclusivos</p>
+          <form class="newsletter-form">
+            <div class="newsletter-form__group">
+              <input type="email" class="newsletter-form__input" placeholder="Tu correo electrónico" required aria-label="Correo electrónico para newsletter">
+              <button type="submit" class="btn btn--primary btn--small">Suscribirse</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Enlaces Rápidos -->
+        <div class="footer__links">
+          <h3 class="footer__heading">Enlaces Rápidos</h3>
+          <ul class="footer__list">
+            <li><a href="destinos.html">Destinos</a></li>
+            <li><a href="agencias.html">Agencias</a></li>
+            <li><a href="precios.html">Precios</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+
+        <!-- Redes Sociales -->
+        <div class="footer__social">
+          <h3 class="footer__heading">Síguenos</h3>
+          <div class="social-icons">
+            <a href="#" class="social-icon" aria-label="Facebook">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
+              </svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="Instagram">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                <circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                <circle cx="18.5" cy="5.5" r="1.5" fill="currentColor"/>
+              </svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="Twitter">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/>
+              </svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="YouTube">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.33z"/>
+                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Mapa Embebido -->
+        <div class="footer__map">
+          <h3 class="footer__heading">Nuestra Ubicación</h3>
+          <div class="map-container">
+            <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=-72.5479%2C-13.1631%2C-72.5449%2C-13.1611&layer=mapnik&marker=-13.1621%2C-72.5464" width="100%" height="200" style="border:0; border-radius: 16px;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa de Machu Picchu"></iframe>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <p class="footer__copyright">&copy; 2026 Viajes Cósmicos. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+  
+  <script src="assets/js/script.js"></script>
+  
+    <script>
+    // Activar filtro según parámetro en URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const filter = urlParams.get('filter');
+    if (filter) {
+        const radio = document.getElementById('filter-' + filter);
+        if (radio) {
+        radio.checked = true;
+        }
+    }
+    </script>
+</body>
+</html>

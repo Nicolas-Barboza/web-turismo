@@ -1,0 +1,27 @@
+/* ===== MAIN CSS - IMPORTA TODOS LOS MÓDULOS ===== */
+
+/* Base */
+@import 'base/reset.css';
+@import 'base/variables.css';
+@import 'base/tipografia.css';
+
+/* Layout */
+@import 'layout/header.css';
+@import 'layout/footer.css';
+@import 'layout/grid.css';
+
+/* Components */
+@import 'components/botones.css';
+@import 'components/cards.css';
+@import 'components/modal.css';
+
+/* Pages */
+@import 'pages/home.css';
+@import 'pages/destinos.css';
+@import 'pages/agencias.css';
+@import 'pages/contacto.css';
+@import 'pages/precios.css';
+@import 'pages/blog.css';
+
+/* Themes */
+@import 'themes/dark-mode.css';

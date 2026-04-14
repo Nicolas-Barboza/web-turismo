@@ -1,0 +1,164 @@
+/* ===== CONTACTO PAGE - VALIDACIÓN CSS-ONLY ===== */
+
+.contact__grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: var(--spacing-3xl);
+}
+
+.contact__info {
+  padding: var(--spacing-xl);
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+  height: fit-content;
+}
+
+.contact__text {
+  color: var(--color-text-light);
+  margin-bottom: var(--spacing-xl);
+}
+
+.contact__details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.contact-detail {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  color: var(--color-text);
+}
+
+.contact-detail svg {
+  color: var(--color-primary);
+}
+
+/* ===== FORMULARIO ===== */
+.contact-form {
+  background: var(--color-bg-secondary);
+  padding: var(--spacing-xl);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+}
+
+.form-group {
+  margin-bottom: var(--spacing-lg);
+  position: relative;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: var(--spacing-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text);
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  padding: var(--spacing-md) var(--spacing-lg);
+  background: var(--color-bg);
+  border: 2px solid var(--color-neutral-300);
+  border-radius: var(--radius-lg);
+  font-size: var(--font-size-base);
+  transition: all var(--transition-base);
+  color: var(--color-text);
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(10, 104, 71, 0.1);
+}
+
+.form-select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--spacing-md) center;
+  background-size: 16px;
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* ===== VALIDACIÓN EN TIEMPO REAL (REQUISITO TP) ===== */
+.form-input:valid:not(:placeholder-shown),
+.form-select:valid,
+.form-textarea:valid:not(:placeholder-shown) {
+  border-color: #0A6847;
+}
+
+.form-input:invalid:not(:placeholder-shown),
+.form-select:invalid,
+.form-textarea:invalid:not(:placeholder-shown) {
+  border-color: #DC3545;
+}
+
+.error-message {
+  display: none;
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  font-size: var(--font-size-xs);
+  color: #DC3545;
+  font-weight: 500;
+}
+
+.form-input:invalid:not(:placeholder-shown) ~ .error-message,
+.form-select:invalid ~ .error-message,
+.form-textarea:invalid:not(:placeholder-shown) ~ .error-message {
+  display: block;
+}
+
+.error-message::before {
+  content: attr(data-error);
+}
+
+/* ===== BOTÓN DE ENVÍO - SOLO FUNCIONA SI EL FORM ES VÁLIDO ===== */
+.contact-form__submit {
+  width: 100%;
+  margin-top: var(--spacing-xl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* SOLO cuando el formulario completo es válido, el botón se habilita */
+.contact-form:valid .contact-form__submit {
+  pointer-events: auto;
+  opacity: 1;
+}
+
+/* Spinner al hacer clic (hereda .btn__spinner de botones.css) */
+.contact-form__submit:active .btn__text {
+  visibility: hidden;
+}
+
+.contact-form__submit:active .btn__spinner {
+  display: block;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .contact__grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+  }
+  
+  .form-group {
+    margin-bottom: var(--spacing-xl);
+  }
+}
