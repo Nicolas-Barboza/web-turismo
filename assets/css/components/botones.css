@@ -81,7 +81,7 @@
   width: 100%;
 }
 
-/* ===== SPINNER DE CARGA (REQUISITO TP) ===== */
+/* ===== SPINNER DE CARGA ===== */
 .btn__spinner {
   display: none;
   width: 20px;
