@@ -2,7 +2,7 @@
 
 ## 📌 Descripción del Proyecto
 
-Sitio web de turismo desarrollado como Trabajo Práctico para la materia de **Programción y Servicio Web con HTML5 y CSS3**. El proyecto implementa técnicas avanzadas de CSS sin utilizar JavaScript para la lógica de UI, cumpliendo con la especificación **"CSS-Only"**.
+Sitio web de turismo desarrollado como Trabajo Práctico para la materia de **Programación y Servicio Web con HTML5 y CSS3**. El proyecto implementa técnicas avanzadas de CSS sin utilizar JavaScript para la lógica de UI, cumpliendo con la especificación **"CSS-Only"**.
 
 **URL de la demo:** [https://github.com/Nicolas-Barboza/web-turismo.git](https://github.com/Nicolas-Barboza/web-turismo.git)
 
